@@ -1,56 +1,8 @@
 @charset "UTF-8";
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
-a{
-    text-decoration: none;
-}
-
-li,ul{
-    display: inline-block;
-}
-
-img{
-    width: 50%;
-    height: 50%;
-}
-
 .main{
     margin-top: 80px;
     margin-bottom: 20%;
-}
-
-.title-name {
-    font-family: "Sour Gummy", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 50;
-    font-style: normal;
-    font-variation-settings:
-    "wdth" 100;
-    font-size: 30px;
-    text-align: center;
-    color: #8aa3b9;
-}
-
-.header{
-    text-align: center;
-    border-bottom: inset;
-    border-color: aqua;
-    background-color: #f5f2e5;
-    padding-top: 3%;
-    padding-bottom: 3%;
-}
-
-.footer{
-    text-align: center;
-    border-top: inset;
-    border-color: aqua;
-    background-color: #f5f2e5;
-    padding: 20px;
-    margin-top: 30%;
 }
 
 .btn{
