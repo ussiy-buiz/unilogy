@@ -15,7 +15,7 @@ img{
 }
 
 .main{
-    margin-top: 20%;
+    margin-top: 3%;
     margin-bottom: 20%;
 }
 
@@ -36,6 +36,8 @@ img{
     border-bottom: inset;
     border-color: aqua;
     background-color: #f5f2e5;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 .footer{
@@ -50,12 +52,13 @@ img{
 .btn{
     list-style-type: none;
     display: flex;
-    justify-content: center;
+    flex-flow: column;
+    align-items: center;
     gap: 10px;
 }
 
 .BTN{
-    font-size: 15px;
+    font-size: 30px;
     background-color: #f37053;
     color: #fff;
     border-radius: 8px;
