@@ -44,36 +44,3 @@ img{
     padding-bottom: 3%;
 }
 
-.footer{
-    text-align: center;
-    border-top: inset;
-    border-color: aqua;
-    background-color: #f5f2e5;
-    padding: 20px;
-    margin-top: 30%;
-}
-
-.btn{
-    list-style-type: none;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    gap: 50px;
-    border-radius: 10px;
-}
-
-.BTN{
-    font-size: 30px;
-    background-color: #f37053;
-    color: #fff;
-    border-radius: 8px;
-    padding: .10rem 1.1rem;
-    margin-right: 35px;
-    margin-left: 1px;
-    cursor: pointer;
-}
-
-.BTN:hover{
-    background-color: #f69679;
-}
-
