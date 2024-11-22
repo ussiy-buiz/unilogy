@@ -29,3 +29,6 @@
     background-color: #f69679;
 }
 
+li,ul{
+    display: inline-block;
+}

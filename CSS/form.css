@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.fm{
+    border: 2px solid;
+    background-color: aquamarine;
+}
+
+ul li{
+    list-style: none;
+    margin-bottom: 20px;
+    label{
+        margin-left: 10px;
+        width: 130px;
+        float: left;
+    }
+}
+
+label{
+    margin-right: 10px;
+    width: 100px;
+    float: left;
+}
+
+ul{
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+input#button{
+    display: block;
+    margin: auto;
+}

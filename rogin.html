@@ -6,6 +6,7 @@
         <meta name="description" content="unilogy">
         <link rel="stylesheet" href="CSS/rogin.css">
         <link rel="stylesheet" href="CSS/gamen1.css">
+        <link rel="stylesheet" href="CSS/form.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family
@@ -18,7 +19,22 @@
             <div class="title-name"> Dust Verse </div>
         </header>
         <main class="main">
-
+            <h1>ログイン</h1>
+            <form action="http://localhost/phpbook/regestration.php" method="post">
+                <ul class="fm">
+                    <li>
+                        <label for="email">メールアドレス：</label>
+                        <input id="email" type="email" name="email" cols="40" rows="60" autocomplete="off">
+                    </li>
+                    <li>
+                        <label for="psd">パスワード：</label>
+                        <input id="psd" type="text" name="psd" cols="40" rows="60" autocomplete="off">
+                    </li>
+                    <li>
+                        <input id="button" type="submit" value="送信"></div>
+                    </li>
+                </ul>
+            </form>
         </main>
     </body>
 </html>
