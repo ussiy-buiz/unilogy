@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>Dust Verse</title>
+        <title>マイページ</title>
         <meta name="description" content="unilogy">
         <link rel="stylesheet" href="CSS/style.css">
         <link rel="stylesheet" href="CSS/gamen1.css">
@@ -15,10 +15,19 @@
     </head>
     <body>
         <header class="header">
-            <div class="title-name"> Dust Verse </div>
+            <div class="title-name"> マイページ </div>
         </header>
-        <main class="main">
-            
-        </main>
+        <h1>ようこそ！<span id="username"></span>さん</h1>
+        <p>メールアドレス: <span id="email"></span></p>
+
+        <script>
+        const params = new URLSearchParams(window.location.search);
+        const username = params.get('username');
+        const email = params.get('email');
+
+                // HTMLに表示
+        document.getElementById('username').textContent = username || 'ゲスト';
+        document.getElementById('email').textContent = email || '不明';
+        </script>
     </body>
 </html>
