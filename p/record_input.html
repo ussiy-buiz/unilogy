@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記録入力</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="CSS/record_input.css">
+    <script defer src="JS/record_input.js"></script>
+</head>
+<body>
+    <header>記録入力</header>
+    <main>
+        <form id="record-form">
+            <label for="location">場所:</label>
+            <input type="text" id="location" name="location" placeholder="例: リビング" required>
+            <br>
+            <label for="comment">コメント:</label>
+            <textarea id="comment" name="comment" placeholder="コメントを入力してください"></textarea>
+            <br>
+            <button type="submit" class="post-button" onclick="saveRecord()">投稿</button>
+        </form>
+    </main>
+</body>
+</html>
