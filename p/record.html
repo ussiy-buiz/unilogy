@@ -6,15 +6,15 @@
     <title>記録</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="CSS/record.css">
+    <script defer src="JS/record_input.js"></script>
     
 </head>
 <body>
     <header>記録</header>
     <main>
-        <button class="record-button">新規記録</button>
-        <div class="record-list">
-            <div class="record-item">トイレ</div>
-            <div class="record-item">リビング</div>
+        <button class="record-button" onclick="goToRecordInput()">新規記録</button>
+        <div class="record-list" id="record-list">
+            <!-- JavaScriptで動的に記録項目と削除ボタンが挿入されます -->
         </div>
     </main>
     <div class="tab-bar">
