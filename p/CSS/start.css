@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #9f9f9f;
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+}
+
+.container {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #333;
+    width: 0; /* 初期状態は幅0 */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #333; /* タイピングカーソル風 */
+    animation: typing 3s steps(11) 1s forwards, blink 0.5s step-end infinite alternate;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 11ch; /* テキストの文字数に合わせる */
+    }
+}
+
+@keyframes blink {
+    from {
+        border-right-color: #333;
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+.ilst1 {
+    position: absolute; /* 親要素内で絶対配置 */
+    bottom: 10px; /* 下からの距離 */
+    left: 10px; /* 左からの距離 */
+}
+
+.ilst2 {
+    position: absolute; /* 親要素内で絶対配置 */
+    bottom: 10px; /* 下からの距離 */
+    right: 10px; /* 左からの距離 */
+}

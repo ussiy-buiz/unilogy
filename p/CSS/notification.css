@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/* 通知デザイン */
+.notification-list {
+    margin: 20px 0;
+}
+
+.notification-item {
+    background: white;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

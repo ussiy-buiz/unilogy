@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/* 投稿デザイン */
+.post-button {
+    text-align: center;
+    background-color: #8a8a8a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 35%;
+    display: block;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.post-list {
+    margin-top: 20px;
+}
+
+.post {
+    background: white;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

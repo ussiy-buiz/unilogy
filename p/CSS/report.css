@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* レポートデザイン */
+.report-list {
+    margin: 20px 0;
+}
+
+.time-distribution {
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

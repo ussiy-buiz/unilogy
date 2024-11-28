@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* 記録デザイン */
+.record-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.record-button {
+    background-color: #a7a7a7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.record-item {
+    flex: 1 1 calc(50% - 10px);
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
