@@ -3,25 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>記録</title>
+    <title>掃除記録</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="CSS/record.css">
-    <script defer src="JS/record_input.js"></script>
-    
+    <style>
+        /* タブバーのスタイル */
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .tab-bar .tab {
+            text-decoration: none;
+            color: #555;
+            font-size: 1em;
+            text-align: center;
+            padding: 10px;
+            flex: 1;
+        }
+
+        .tab-bar .tab.active {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .tab-bar .tab:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
-    <header>記録</header>
+    <header>掃除記録</header>
     <main>
         <button class="record-button" onclick="goToRecordInput()">新規記録</button>
         <div class="record-list" id="record-list">
-            <!-- JavaScriptで動的に記録項目と削除ボタンが挿入されます -->
+            <!-- 記録データがここに表示されます -->
         </div>
     </main>
+    <!-- タブバー -->
     <div class="tab-bar">
         <a href="post.html" class="tab">投稿</a>
         <a href="record.html" class="tab active">記録</a>
         <a href="report.html" class="tab">レポート</a>
         <a href="notification.html" class="tab">通知</a>
     </div>
+
+    <script>
+        // 新規記録画面に遷移
+        function goToRecordInput() {
+            window.location.href = "record_input.html";
+        }
+
+        // 記録データを表示
+        document.addEventListener("DOMContentLoaded", () => {
+            const recordList = document.getElementById("record-list");
+            const records = JSON.parse(localStorage.getItem("records")) || [];
+
+            if (records.length === 0) {
+                recordList.innerHTML = "<p>まだ記録がありません。</p>";
+                return;
+            }
+
+            records.forEach((record) => {
+                const recordItem = document.createElement("div");
+                recordItem.classList.add("record-item");
+                recordItem.innerHTML = `
+                    <div>
+                        <strong>開始時間:</strong> ${record.startTime}<br>
+                        <strong>掃除時間:</strong> ${record.duration}<br>
+                        <strong>場所:</strong> ${record.location}<br>
+                        <strong>コメント:</strong> ${record.comment || "なし"}
+                    </div>
+                `;
+                recordList.appendChild(recordItem);
+            });
+        });
+    </script>
 </body>
 </html>
