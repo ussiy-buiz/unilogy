@@ -17,21 +17,21 @@
             <div class="section-title">時間配分</div>
             <div class="pie-chart"></div>
         </div>
-        <div class="section countdown">
-            <div class="number">000</div>
-            <div>大切なイベントまでの日数をカウントダウン</div>
-        </div>
         <div class="section">
             <div class="section-title">今週の目標</div>
             <div>1週間の目標を設定して学習を習慣化しよう</div>
             <div>
                 <label for="cleaning-time">掃除時間:</label>
-                <input type="number" id="cleaning-time" name="cleaning-time" placeholder="時間" min="1" max="24">
-                <input type="number" id="cleaning-minutes" name="cleaning-minutes" placeholder="分 "min="1" max="60">
+                <input type="number" id="cleaning-time" name="cleaning-time" placeholder="時間" min="0" max="24">
+                <input type="number" id="cleaning-minutes" name="cleaning-minutes" placeholder="分 " min="0" max="60">
             </div>
             <div>
                 <label for="cleaning-place">掃除場所:</label>
                 <input type="text" id="cleaning-place" name="cleaning-place" placeholder="場所">
+            </div>
+            <div>
+                <label for="cleaning-deadline">期限:</label>
+                <input type="date" id="cleaning-deadline" name="cleaning-deadline">
             </div>
             <button onclick="writeGoal()">目標を決定</button>
             <div id="goal-display"></div>
@@ -44,12 +44,20 @@
         <a href="notification.html" class="tab">通知</a>
     </div>
     <script>
+        let goalCount = 0;
+
         function writeGoal() {
             const time = document.getElementById('cleaning-time').value;
             const minutes = document.getElementById('cleaning-minutes').value;
             const place = document.getElementById('cleaning-place').value;
+            const deadline = document.getElementById('cleaning-deadline').value;
             const goalDisplay = document.getElementById('goal-display');
-            goalDisplay.innerHTML = `目標<br>掃除時間: ${time}時間 ${minutes}分<br>掃除場所: ${place}`;
+
+            goalCount++;
+            const newGoal = document.createElement('div');
+            newGoal.classList.add('goal-item');
+            newGoal.innerHTML = `目標${goalCount}<br>掃除時間: ${time}時間 ${minutes}分<br>掃除場所: ${place}<br>期限: ${deadline}`;
+            goalDisplay.appendChild(newGoal);
         }
     </script>
 </body>
