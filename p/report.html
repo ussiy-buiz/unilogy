@@ -6,118 +6,51 @@
     <title>レポート</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="CSS/report.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header>レポート</header>
-    <main>
-        <div class="report-list">
-            <p>掃除場所1: 3時間30分</p>
-            <p>掃除場所2: 2時間0分</p>
+    <div class="container">
+        <div class="section">
+            <div class="section-title">掃除時間</div>
+            <div class="chart">グラフ（棒グラフ）</div>
         </div>
-        <div class="time-distribution">
-            <canvas id="timeChart"></canvas>
+        <div class="section">
+            <div class="section-title">時間配分</div>
+            <div class="pie-chart"></div>
         </div>
-        <div class="goal-input">
-            <input type="text" id="goalPlace" placeholder="掃除場所">
-            <input type="text" id="goalTime" placeholder="目標時間 (例: 1時間30分)">
-            <button id="addGoalButton">目標時間を追加</button>
+        <div class="section countdown">
+            <div class="number">000</div>
+            <div>大切なイベントまでの日数をカウントダウン</div>
         </div>
-        <div class="goal-list">
-            <button id="showGoalsButton">目標時間を表示</button>
-            <ul id="goalList"></ul>
+        <div class="section">
+            <div class="section-title">今週の目標</div>
+            <div>1週間の目標を設定して学習を習慣化しよう</div>
+            <div>
+                <label for="cleaning-time">掃除時間:</label>
+                <input type="number" id="cleaning-time" name="cleaning-time" placeholder="時間" min="1" max="24">
+                <input type="number" id="cleaning-minutes" name="cleaning-minutes" placeholder="分 "min="1" max="60">
+            </div>
+            <div>
+                <label for="cleaning-place">掃除場所:</label>
+                <input type="text" id="cleaning-place" name="cleaning-place" placeholder="場所">
+            </div>
+            <button onclick="writeGoal()">目標を決定</button>
+            <div id="goal-display"></div>
         </div>
-    </main>
+    </div>
     <div class="tab-bar">
         <a href="post.html" class="tab">投稿</a>
         <a href="record.html" class="tab">記録</a>
         <a href="report.html" class="tab active">レポート</a>
         <a href="notification.html" class="tab">通知</a>
     </div>
-    <script>// 時間データを取得して分に変換する関数
-    function getTimeData() {
-        const timeData = {};
-        const reportList = document.querySelectorAll('.report-list p');
-        reportList.forEach(item => {
-            const text = item.textContent;
-            const [place, time] = text.split(': ');
-            const [hours, minutes] = time.match(/\d+/g).map(Number);
-            timeData[place] = hours * 60 + minutes;
-        });
-        return timeData;
-    }
-
-    // 時間データを取得
-    const timeData = getTimeData();
-
-    // 円グラフを作成
-    const ctx = document.getElementById('timeChart').getContext('2d');
-    const timeChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: Object.keys(timeData),
-            datasets: [{
-                data: Object.values(timeData),
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            const label = context.label || '';
-                            const value = context.raw;
-                            const hours = Math.floor(value / 60);
-                            const minutes = value % 60;
-                            return `${label}: ${hours}時間${minutes}分`;
-                        }
-                    }
-                }
-            },
-             layout: {
-                padding: {
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    bottom: 0
-                }
-            },
-            elements: {
-                arc: {
-                    borderWidth: 0,
-                    radius: '10%' // 半径を半分に設定
-                }
-            }
+    <script>
+        function writeGoal() {
+            const time = document.getElementById('cleaning-time').value;
+            const minutes = document.getElementById('cleaning-minutes').value;
+            const place = document.getElementById('cleaning-place').value;
+            const goalDisplay = document.getElementById('goal-display');
+            goalDisplay.innerHTML = `目標<br>掃除時間: ${time}時間 ${minutes}分<br>掃除場所: ${place}`;
         }
-    });
-        // 目標時間を追加する関数
-        function addGoal() {
-            const place = document.getElementById('goalPlace').value;
-            const time = document.getElementById('goalTime').value;
-            if (place && time) {
-                const goalList = document.getElementById('goalList');
-                const listItem = document.createElement('li');
-                listItem.textContent = `${place}: ${time}`;
-                goalList.appendChild(listItem);
-                document.getElementById('goalPlace').value = '';
-                document.getElementById('goalTime').value = '';
-            }
-        }
-
-        // 目標時間を表示する関数
-        function showGoals() {
-            const goalList = document.getElementById('goalList');
-            goalList.style.display = goalList.style.display === 'none' ? 'block' : 'none';
-        }
-
-        document.getElementById('addGoalButton').addEventListener('click', addGoal);
-        document.getElementById('showGoalsButton').addEventListener('click', showGoals);
-
     </script>
 </body>
 </html>
