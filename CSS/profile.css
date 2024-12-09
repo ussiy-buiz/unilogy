@@ -3,19 +3,39 @@ body {
     font-family: Arial, sans-serif; /* フォント設定 */
     margin: 0; /* ページの余白をなくす */
     padding: 0; /* ページの内側余白をなくす */
-    background-color: #8bf49b; /* 背景色 */
+    background-color: #FFFFFF; /* 背景色 */
+    position: fixed;
+    width: 100%
+    
   }
   
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+  }
+  th {
+    background-color: white;
+    margin-right: 10px;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: normal;
+  }
+  td {
+    background-color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: normal;
+  }
   /* ヘッダーのスタイル */
   .header {
     background-color: #4a90e2; /* 青いバーの色 */
     color: white; /* テキストの色 */
     padding: 20px 10px; /* 内側余白 */
     font-size: 20px; /* テキストサイズ */
-    display: flex; /* フレックスボックスでレイアウト */
-    align-items: center; /* 垂直方向中央揃え */
+    display: block; /* フレックスボックスでレイアウト */
     position: fixed;
-    display: block;
+    width: 100%;
   }
   
   .header a {
@@ -23,47 +43,27 @@ body {
     text-decoration: none; /* リンクの下線を消す */
     margin-right: 55px; /* 戻るリンクの余白 */
   }
-  
-  /* フォロワーリストのスタイル */
-  .follower-list {
-    margin: 0; /* リストの外側余白をなくす */
-    padding: 10px; /* 内側余白 */
-    list-style-type: none; /* 項目記号を消す */
+  .profile-item span{
+    font-size: 40px;
+    font-weight: bold;
   }
-  
-  /* フォロワー個別のスタイル */
-  .follower-item {
-    display: flex; /* フレックスボックスでレイアウト */
-    align-items: center; /* 垂直方向中央揃え */
-    background-color: white; /* 背景色 */
-    margin: 10px 0; /* 項目の上下余白 */
-    padding: 10px; /* 項目の内側余白 */
-    border-radius: 8px; /* 角を丸くする */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影の追加 */
+  .textarea-container span{
+    font-size: 20px;
+    font-weight: normal;
   }
-  
-  /* プロフィール画像のスタイル */
-  .profile-pic {
-    width: 50px; /* 幅 */
-    height: 50px; /* 高さ */
-    border-radius: 50%; /* 円形にする */
-    background-color: #ccc; /* グレーの背景色 */
-    margin-right: 10px; /* 右側の余白 */
+  .textarea-container{
+    padding-bottom: 150px;
   }
-  
-  /* フォロワーテキスト部分のスタイル */
-  .follower-text {
-    font-size: 16px; /* テキストサイズ */
-  }
-  
-  .follower-text .nickname {
-    font-weight: bold; /* ニックネームを太字にする */
+  .profile-content{
+    padding: 80px 10px 10px;
+    font-size: 30px;
   }
   .footer{
-    background-color: #FFFFFF;
-    width: 200px;
-    border: #FFFFFF solid 10px;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: #000000 solid 10px;
     border-radius: 20px;
-    margin: 400px auto 10px;
+    width: 200px;
+    margin: 10px auto 10px;
     text-align: center;
   }

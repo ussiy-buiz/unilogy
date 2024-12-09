@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif; /* フォント設定 */
     margin: 0; /* ページの余白をなくす */
     padding: 0; /* ページの内側余白をなくす */
-    background-color: #8bf49b; /* 背景色 */
+    background-color: white; /* 背景色 */
   }
   
   /* ヘッダーのスタイル */
@@ -15,7 +15,7 @@ body {
     display: flex; /* フレックスボックスでレイアウト */
     align-items: center; /* 垂直方向中央揃え */
     position: fixed;
-    width: 375px;
+    width: 100%;
   }
   
   .header a {
@@ -40,6 +40,7 @@ body {
     padding: 10px 80px 80px 10px; /* 項目の内側余白 */
     border-radius: 8px; /* 角を丸くする */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影の追加 */
+    border: 2px solid #000;
   }
   
   /* プロフィール画像のスタイル */
