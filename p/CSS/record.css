@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-/* 記録デザイン */
-.record-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
 
 .record-button {
     background-color: #a7a7a7;
@@ -18,11 +12,54 @@
     cursor: pointer;
 }
 
+
+/* 記録デザイン */
+.record-list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill,300px);
+    justify-content: start; /* 左寄せ */
+    align-items: start; /* 上寄せ */
+}
+
+/* 記録アイテムのデザイン */
 .record-item {
-    flex: 1 1 calc(50% - 10px);
     background: white;
-    padding: 20px;
+    padding: 15px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 記録アイテム内のテキストデザイン */
+.record-item strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.record-item div {
+    margin-bottom: 10px;
+}
+
+.lo{
     text-align: center;
-    border: 1px solid #ddd;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.ti{
+    text-align: right;
+    font-size: 30%;
+}
+
+.comment-textarea {
+    width: 90%; /* 親要素に合わせる */
+    height: 100px; /* 固定サイズ */
+    overflow-y: auto; /* 内容が多い場合スクロール可能に */
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    white-space: pre-wrap; /* 改行を保持 */
 }

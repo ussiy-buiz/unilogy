@@ -6,38 +6,7 @@
     <title>掃除記録</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="CSS/record.css">
-    <style>
-        /* タブバーのスタイル */
-        .tab-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-around;
-            background-color: #f9f9f9;
-            border-top: 1px solid #ddd;
-            padding: 10px 0;
-        }
-
-        .tab-bar .tab {
-            text-decoration: none;
-            color: #555;
-            font-size: 1em;
-            text-align: center;
-            padding: 10px;
-            flex: 1;
-        }
-
-        .tab-bar .tab.active {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        .tab-bar .tab:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
+    
 </head>
 <body>
     <header>掃除記録</header>
@@ -71,17 +40,21 @@
                 return;
             }
 
+
+            records.reverse(); // 配列を逆順に
+            
             records.forEach((record) => {
                 const recordItem = document.createElement("div");
                 recordItem.classList.add("record-item");
                 recordItem.innerHTML = `
                     <div>
-                        <strong>開始時間:</strong> ${record.startTime}<br>
-                        <strong>掃除時間:</strong> ${record.duration}<br>
-                        <strong>場所:</strong> ${record.location}<br>
-                        <strong>コメント:</strong> ${record.comment || "なし"}
+                        <p class="ti">${record.startTime || "20XX/M/D X:X"}</p>
+                        <p class="lo">${record.location || "（場所名）"}</p>
+                        <strong>かかった時間:</strong>${record.duration}
+                        <strong>コメント:</strong> <div class="comment-textarea">${record.comment || "なし"}</div>
                     </div>
                 `;
+                
                 recordList.appendChild(recordItem);
             });
         });
