@@ -3,25 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>記録</title>
+    <title>掃除記録</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="CSS/record.css">
     
 </head>
 <body>
-    <header>記録</header>
+    <header>掃除記録</header>
     <main>
-        <button class="record-button">新規記録</button>
-        <div class="record-list">
-            <div class="record-item">トイレ</div>
-            <div class="record-item">リビング</div>
+        <button class="record-button" onclick="goToRecordInput()">新規記録</button>
+        <div class="record-list" id="record-list">
+            <!-- 記録データがここに表示されます -->
         </div>
     </main>
+    <!-- タブバー -->
     <div class="tab-bar">
         <a href="post.html" class="tab">投稿</a>
         <a href="record.html" class="tab active">記録</a>
         <a href="report.html" class="tab">レポート</a>
         <a href="notification.html" class="tab">通知</a>
     </div>
+
+    <script>
+        // 新規記録画面に遷移
+        function goToRecordInput() {
+            window.location.href = "record_input.html";
+        }
+
+        // 記録データを表示
+        document.addEventListener("DOMContentLoaded", () => {
+            const recordList = document.getElementById("record-list");
+            const records = JSON.parse(localStorage.getItem("records")) || [];
+
+            if (records.length === 0) {
+                recordList.innerHTML = "<p>まだ記録がありません。</p>";
+                return;
+            }
+
+
+            records.reverse(); // 配列を逆順に
+            
+            records.forEach((record) => {
+                const recordItem = document.createElement("div");
+                recordItem.classList.add("record-item");
+                recordItem.innerHTML = `
+                    <div>
+                        <p class="ti">${record.startTime || "20XX/M/D X:X"}</p>
+                        <p class="lo">${record.location || "（場所名）"}</p>
+                        <strong>かかった時間:</strong>${record.duration}
+                        <strong>コメント:</strong> <div class="comment-textarea">${record.comment || "なし"}</div>
+                    </div>
+                `;
+                
+                recordList.appendChild(recordItem);
+            });
+        });
+    </script>
 </body>
 </html>

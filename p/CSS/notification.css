@@ -12,3 +12,77 @@
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+/* 全体のリセットと基本設定 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #9cf3ff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* ヘッダー */
+header {
+    background-color: #aaaaaa;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+    header .logo {
+        font-size: 24px;
+    }
+
+    header nav {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+        header nav a {
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border-bottom: 2px solid transparent;
+        }
+
+            header nav a:hover,
+            header nav a.active {
+                border-bottom: 2px solid white;
+                font-weight: bold;
+            }
+
+/* 通知リスト */
+.notification-list {
+    padding: 20px;
+}
+
+.notification-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .notification-item::before {
+        content: "";
+        width: 40px;
+        height: 40px;
+        background-color: #ddd;
+        border-radius: 50%;
+        display: block;
+    }

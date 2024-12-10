@@ -1,0 +1,69 @@
+/* ページ全体のスタイル */
+body {
+    font-family: Arial, sans-serif; /* フォント設定 */
+    margin: 0; /* ページの余白をなくす */
+    padding: 0; /* ページの内側余白をなくす */
+    background-color: #FFFFFF; /* 背景色 */
+    position: fixed;
+    width: 100%
+    
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+  }
+  th {
+    background-color: white;
+    margin-right: 10px;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: normal;
+  }
+  td {
+    background-color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: normal;
+  }
+  /* ヘッダーのスタイル */
+  .header {
+    background-color: #4a90e2; /* 青いバーの色 */
+    color: white; /* テキストの色 */
+    padding: 20px 10px; /* 内側余白 */
+    font-size: 20px; /* テキストサイズ */
+    display: block; /* フレックスボックスでレイアウト */
+    position: fixed;
+    width: 100%;
+  }
+  
+  .header a {
+    color: white; /* リンクの文字色 */
+    text-decoration: none; /* リンクの下線を消す */
+    margin-right: 55px; /* 戻るリンクの余白 */
+  }
+  .profile-item span{
+    font-size: 40px;
+    font-weight: bold;
+  }
+  .textarea-container span{
+    font-size: 20px;
+    font-weight: normal;
+  }
+  .textarea-container{
+    padding-bottom: 150px;
+  }
+  .profile-content{
+    padding: 80px 10px 10px;
+    font-size: 30px;
+  }
+  .footer{
+    background-color: #000000;
+    color: #FFFFFF;
+    border: #000000 solid 10px;
+    border-radius: 20px;
+    width: 200px;
+    margin: 10px auto 10px;
+    text-align: center;
+  }

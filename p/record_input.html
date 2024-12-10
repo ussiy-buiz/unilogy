@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掃除時間記録</title>
+    <link rel="stylesheet" href="CSS/record_input.css">
+</head>
+<body>
+    <header>掃除時間記録</header>
+    <main>
+        <form id="record-form">
+            <!-- 開始時間 -->
+            <label for="start-time">開始時間:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="start-time" name="start-time" placeholder="例: 2023/12/31 12:00">
+                <button type="button" onclick="setStartTime()" style="flex: 1;">現在時刻を設定</button>
+            </div>
+
+            <!-- ストップウォッチ -->
+            <div id="timer-section">
+                <label>タイマー:</label>
+                <div id="timer-display">00:00:00</div>
+                <button type="button" id="start-timer">開始</button>
+                <button type="button" id="stop-timer" disabled>停止</button>
+                <button type="button" id="reset-timer" disabled>リセット</button>
+                <button type="button" id="set-timer" disabled>掃除時間に反映</button>
+            </div>
+
+            <!-- 掃除時間 -->
+            <label>掃除時間:</label>
+            <div class="picker-container">
+                <div class="picker">
+                    <label for="hours-picker">時間</label>
+                    <select id="hours-picker" name="hours">
+                        <option value="0">0 時間</option>
+                        <option value="1">1 時間</option>
+                        <option value="2">2 時間</option>
+                        <option value="3">3 時間</option>
+                        <option value="4">4 時間</option>
+                        <option value="5">5 時間</option>
+                        <option value="6">6 時間</option>
+                    </select>
+                </div>
+                <div class="picker">
+                    <label for="minutes-picker">分</label>
+                    <select id="minutes-picker" name="minutes">
+                        <option value="0">0 分</option>
+                        <option value="1">1 分</option>
+                        <option value="2">2 分</option>
+                        <option value="3">3 分</option>
+                        <option value="4">4 分</option>
+                        <option value="5">5 分</option>
+                        <option value="10">10 分</option>
+                        <option value="15">15 分</option>
+                        <option value="20">20 分</option>
+                        <option value="25">25 分</option>
+                        <option value="30">30 分</option>
+                        <option value="35">35 分</option>
+                        <option value="40">40 分</option>
+                        <option value="45">45 分</option>
+                        <option value="50">50 分</option>
+                        <option value="55">55 分</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 場所入力 -->
+            <label for="location">場所:</label>
+            <input type="text" id="location" name="location" placeholder="例: リビング" required>
+
+            <!-- コメント入力 -->
+            <label for="comment">コメント:</label>
+            <textarea id="comment" name="comment" placeholder="コメントを入力してください"></textarea>
+
+            <!-- 投稿ボタン -->
+            <button type="button" onclick="saveRecord()">投稿</button>
+        </form>
+        <a href="record.html" class="back-button">戻る</a>
+    </main>
+
+    <script>
+        let timerInterval;
+        let elapsedSeconds = 0;
+
+        // 現在時刻を設定する関数
+        function setStartTime() {
+            const now = new Date();
+            const formattedTime = now.toLocaleString('ja-JP', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('start-time').value = formattedTime;
+        }
+
+        // タイマーの表示を更新
+        function updateTimerDisplay() {
+            const hours = Math.floor(elapsedSeconds / 3600);
+            const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+            const seconds = elapsedSeconds % 60;
+            document.getElementById('timer-display').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // タイマーを開始
+        document.getElementById('start-timer').addEventListener('click', () => {
+            document.getElementById('start-timer').disabled = true;
+            document.getElementById('stop-timer').disabled = false;
+            document.getElementById('reset-timer').disabled = true;
+            document.getElementById('set-timer').disabled = true;
+
+            timerInterval = setInterval(() => {
+                elapsedSeconds++;
+                updateTimerDisplay();
+            }, 1000);
+        });
+
+        // タイマーを停止
+        document.getElementById('stop-timer').addEventListener('click', () => {
+            clearInterval(timerInterval);
+            document.getElementById('start-timer').disabled = false;
+            document.getElementById('stop-timer').disabled = true;
+            document.getElementById('reset-timer').disabled = false;
+            document.getElementById('set-timer').disabled = false;
+        });
+
+        // タイマーをリセット
+        document.getElementById('reset-timer').addEventListener('click', () => {
+            elapsedSeconds = 0;
+            updateTimerDisplay();
+            document.getElementById('reset-timer').disabled = true;
+            document.getElementById('set-timer').disabled = true;
+        });
+
+        // タイマーの時間を掃除時間に反映
+        document.getElementById('set-timer').addEventListener('click', () => {
+            const hours = Math.floor(elapsedSeconds / 3600);
+            const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+
+            // 時間と分を反映
+            document.getElementById('hours-picker').value = hours;
+            document.getElementById('minutes-picker').value = Math.min(minutes, 55); // 分は選択肢に収まるよう制限
+        });
+
+        // 記録を保存する関数
+        function saveRecord() {
+            const startTime = document.getElementById('start-time').value;
+            const hours = document.getElementById('hours-picker').value;
+            const minutes = document.getElementById('minutes-picker').value;
+            const duration = `${hours} 時間 ${minutes} 分`;
+            const location = document.getElementById('location').value;
+            const comment = document.getElementById('comment').value;
+
+            const records = JSON.parse(localStorage.getItem("records")) || [];
+            records.push({ startTime, duration, location, comment });
+            localStorage.setItem("records", JSON.stringify(records));
+
+            // 記録画面に遷移
+            window.location.href = "record.html";
+        }
+    </script>
+</body>
+</html>

@@ -107,6 +107,7 @@ header {
 }
 
 /* レポートデザイン */
+
 .report-list {
     margin: 20px 0;
 }
@@ -120,13 +121,68 @@ header {
     border-radius: 5px;
 }
 
+.report-list p {
+    margin: 0.5em 0;
+    font-size: 1.2em;
+}
+
+.time-distribution {
+    margin-top: 20px;
+    background-color: white;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    justify-content: center; /* 中央に配置 */
+}
+
+#timeChart {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* 中央に配置 */
+    flex: 1; /* フレックスボックスの子要素としてサイズを調整 */
+    max-width: 400px; /* 最大幅を設定 */
+    max-height: 400px; /* 最大高さを設定 */
+}
+/* 目標時間入力フォーム */
+.goal-input {
+    margin: 20px 0;
+    text-align: center;
+}
+
+    .goal-input input {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .goal-input button {
+        padding: 10px 20px;
+        background-color: #8a8a8a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px; /* ボタンの上に余白を追加 */
+    }
+
+        .goal-input button:hover {
+            background-color: #686868;
+        }
+
+
+
 /* 通知デザイン */
 .notification-list {
     margin: 20px 0;
 }
 
 .notification-item {
-    background: white;
+    background: black;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
