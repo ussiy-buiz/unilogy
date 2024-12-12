@@ -7,7 +7,7 @@ body {
   .profile-container {
     max-width: 70%;
     max-height: 100%;
-    margin: 0px 20px 20px 0px; /* 左寄せ */
+    margin: 0px 20px 0px 0px; /* 左寄せ */
     padding: 20px;
     background-color: #ADD8E6;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -59,15 +59,17 @@ body {
   
   .profile-section {
     margin-top: 20px;
+    font-size: 20px;
   }
   
   .profile-section h2 {
-    font-size: 16px;
+    font-size: 32px;
     border-bottom: 1px solid #000;
   }
   
   .profile-section p {
     margin-top: 10px;
+    padding-bottom: 88px;
   }
   
   .profile-info {
@@ -75,7 +77,7 @@ body {
   }
   
   .profile-info h2 {
-    font-size: 16px;
+    font-size: 32px;
     border-bottom: 1px solid #000;
   }
   
@@ -92,6 +94,7 @@ body {
   .label {
     text-align: left;
     font-weight: bold;
+    font-size: 24px;
   }
   
   .value {
