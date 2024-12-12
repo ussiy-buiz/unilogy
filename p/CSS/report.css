@@ -1,83 +1,90 @@
-@charset "UTF-8";
-
-/* レポートデザイン */
-.report-list {
-    margin: 20px 0;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
 }
 
-.time-distribution {
-    margin-top: 20px;
-    background-color: white;
-    padding: 10px;
+header {
+    background-color: #2c3e50;
+    color: #fff;
     text-align: center;
+    padding: 20px;
+    font-size: 24px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 700px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.calendar div {
+    padding: 20px;
+    cursor: pointer;
     border: 1px solid #ddd;
-    border-radius: 5px;
-}
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+    border-radius: 8px;
     background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-    .header .time {
-        font-size: 1.2em;
-    }
-
-    .header .sort {
-        color: blue;
-        cursor: pointer;
-    }
-
-.chart {
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    margin-bottom: 10px;
+.calendar div:hover {
+    background-color: #686868;
+    color: white;
+    transform: scale(1.1);
 }
 
-.pie-chart {
-    width: 100px;
-    height: 100px;
-    background: conic-gradient(green 0% 100%, #f0f0f0 0%);
-    border-radius: 50%;
-    margin: 0 auto;
+.calendar .highlight {
+    background-color: #27ae60;
+    color: white;
+    font-weight: bold;
 }
 
-.countdown {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #eef4fc;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+.calendar .highlight:hover {
+    background-color: #2ecc71;
 }
 
-    .countdown .number {
-        font-size: 2em;
-        font-weight: bold;
-        color: blue;
-    }
-.goal-display {
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 10px;
-    max-height: 200px;
-    overflow-y: auto;
+.calendar .selected {
+    background-color: #e74c3c;
+    color: white;
+    font-weight: bold;
 }
 
-.goal-item {
-    border-bottom: 1px solid #eee;
-    padding: 5px 0;
-    margin-bottom: 10px;
-    text-align: center; /* 中央揃えに設定 */
-    background-color: white; /* 背景色を白に設定 */
+.calendar .empty {
+    background-color: transparent;
+}
+
+.calendar .week-day {
+    font-weight: bold;
+    background-color: #34495e;
+    color: white;
+}
+
+a.back-button {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+a.back-button:hover {
+    background-color: #3498db;
+}
+
+li.goal {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+li.achieved {
+    color: #27ae60;
+    font-weight: bold;
 }

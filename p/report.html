@@ -3,62 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>レポート</title>
+    <title>掃除時間記録</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="CSS/report.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="section">
-            <div class="section-title">掃除時間</div>
-            <div class="chart">グラフ（棒グラフ）</div>
-        </div>
-        <div class="section">
-            <div class="section-title">時間配分</div>
-            <div class="pie-chart"></div>
-        </div>
-        <div class="section">
-            <div class="section-title">今週の目標</div>
-            <div>1週間の目標を設定して学習を習慣化しよう</div>
+    <header>今月の掃除時間</header>
+    <main>
+        <h2 style="text-align: center;">カレンダー
             <div>
-                <label for="cleaning-time">掃除時間:</label>
-                <input type="number" id="cleaning-time" name="cleaning-time" placeholder="時間" min="0" max="24">
-                <input type="number" id="cleaning-minutes" name="cleaning-minutes" placeholder="分 " min="0" max="60">
+                <li class="achieved">
+                    達成した日
+                </li>
+                <li class="goal">
+                    目標日
+                </li>
             </div>
-            <div>
-                <label for="cleaning-place">掃除場所:</label>
-                <input type="text" id="cleaning-place" name="cleaning-place" placeholder="場所">
-            </div>
-            <div>
-                <label for="cleaning-deadline">期限:</label>
-                <input type="date" id="cleaning-deadline" name="cleaning-deadline">
-            </div>
-            <button onclick="writeGoal()">目標を決定</button>
-            <div id="goal-display"></div>
-        </div>
-    </div>
+        </h2>
+        
+        <div class="calendar" id="calendar"></div>
+    </main>
+
+    <!-- タブバー -->
     <div class="tab-bar">
         <a href="post.html" class="tab">投稿</a>
         <a href="record.html" class="tab">記録</a>
         <a href="report.html" class="tab active">レポート</a>
         <a href="notification.html" class="tab">通知</a>
     </div>
+
     <script>
-        let goalCount = 0;
+        document.addEventListener("DOMContentLoaded", () => {
+            // 現在の日付を取得してカレンダーを作成
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth(); // 月（0〜11）
+            const currentYear = currentDate.getFullYear();
+            const startDay = new Date(currentYear, currentMonth, 1).getDay(); // 今月の初日の曜日
+            const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate(); // 今月の最終日
 
-        function writeGoal() {
-            const time = document.getElementById('cleaning-time').value;
-            const minutes = document.getElementById('cleaning-minutes').value;
-            const place = document.getElementById('cleaning-place').value;
-            const deadline = document.getElementById('cleaning-deadline').value;
-            const goalDisplay = document.getElementById('goal-display');
+            // カレンダーを表示するために曜日のヘッダー
+            const calendar = document.getElementById('calendar');
+            const daysOfWeek = ["日", "月", "火", "水", "木", "金", "土"];
+            daysOfWeek.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.textContent = day;
+                dayElement.classList.add('week-day');
+                calendar.appendChild(dayElement);
+            });
 
-            goalCount++;
-            const newGoal = document.createElement('div');
-            newGoal.classList.add('goal-item');
-            newGoal.innerHTML = `目標${goalCount}<br>掃除時間: ${time}時間 ${minutes}分<br>掃除場所: ${place}<br>期限: ${deadline}`;
-            goalDisplay.appendChild(newGoal);
-        }
+            // カレンダーの日付を生成
+            for (let i = 0; i < startDay; i++) {
+                calendar.appendChild(document.createElement('div')); // 空白のセル
+            }
+
+            // 1日から最終日までの日付を表示
+            for (let day = 1; day <= lastDate; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.textContent = day;
+                dayElement.classList.add('day'); // 追加したクラス
+                dayElement.addEventListener('click', () => {
+                    // クリックした日付がすでに選択されている場合、選択を解除
+                    if (dayElement.classList.contains('selected')) {
+                        dayElement.classList.remove('selected');
+                    } else {
+                        // すでに選択されている日付があれば選択解除
+                        const selectedDay = document.querySelector('.calendar .selected');
+                        if (selectedDay) {
+                            selectedDay.classList.remove('selected');
+                        }
+                        // クリックした日付を選択状態にする
+                        dayElement.classList.add('selected');
+                    }
+                });
+                calendar.appendChild(dayElement);
+            }
+
+            // localStorageから掃除記録の日付を取得し、該当する日をハイライト
+            const records = JSON.parse(localStorage.getItem("records")) || [];
+            records.forEach(record => {
+                const startTime = new Date(record.startTime);
+                if (startTime.getMonth() === currentMonth && startTime.getFullYear() === currentYear) {
+                    const savedDay = startTime.getDate();
+                    const allDays = document.querySelectorAll('.calendar div');
+                    // 日付が一致するセルをハイライト
+                    for (let i = 7; i < allDays.length; i++) {
+                        if (parseInt(allDays[i].textContent) === savedDay) {
+                            allDays[i].classList.add('highlight');
+                        }
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
